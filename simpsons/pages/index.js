@@ -1,16 +1,21 @@
 import React from "react";
+import Layout from "@/components/Layout";
+import Link from "next/link";
 
 const MainPage = ({ episodes }) => {
   console.log(episodes);
   return (
-    <main>
-      <h1>SIMPSONS EPISODE GUIDE</h1>
+    <Layout>
       {episodes
         .filter((episode) => episode.episode === 1)
         .map((filteredEpisode) => {
-          return <div>Season {filteredEpisode.season}</div>;
+          return (
+            <Link href={`/season${filteredEpisode.season}`}>
+              <div>Season {filteredEpisode.season}</div>
+            </Link>
+          );
         })}
-    </main>
+    </Layout>
   );
 };
 
