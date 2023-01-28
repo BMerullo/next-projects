@@ -10,7 +10,7 @@ const MainPage = ({ episodes }) => {
         .filter((episode) => episode.episode === 1)
         .map((filteredEpisode) => {
           return (
-            <Link href={`/${filteredEpisode.season}`}>
+            <Link href={`${filteredEpisode.season}`}>
               <div>Season {filteredEpisode.season}</div>
             </Link>
           );
