@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
+import Link from "next/link";
 
 const Season = ({ episodes }) => {
   const router = useRouter();
@@ -17,8 +18,14 @@ const Season = ({ episodes }) => {
         {episodes
           .filter((episode) => episode.season === +seasonId)
           .map((filter) => {
-            console.log(filter);
-            return <div> {filter.name} </div>;
+            return (
+              <Link href={`${seasonId}/${filter.name}`}>
+                <div>
+                  <img src={filter.thumbnailUrl} alt="" />
+                  <p>{filter.name} </p>
+                </div>
+              </Link>
+            );
           })}
       </section>
     </Layout>
@@ -39,7 +46,6 @@ export async function getStaticPaths() {
     };
   });
   return {
-    // paths: [{ params: { productId: "1" } }],
     paths,
     fallback: true,
   };
