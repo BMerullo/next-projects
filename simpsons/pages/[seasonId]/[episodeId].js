@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 
 export const Episodes = ({ episodes }) => {
   const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   console.log("IDs", router.query);
   const { episodeId, seasonId } = router.query;
   console.log("Episode list", episodes);
@@ -13,7 +16,7 @@ export const Episodes = ({ episodes }) => {
         .filter((episode) => episode.name === episodeId)
         .map((filter) => {
           return (
-            <div>
+            <div key={filter.id}>
               <img src={filter.thumbnailUrl} alt="" />
               <p>{filter.name} </p>
             </div>

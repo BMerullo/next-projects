@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
+import Layout from "../components/Layout";
 import Link from "next/link";
 
 const Season = ({ episodes }) => {
@@ -24,7 +24,7 @@ const Season = ({ episodes }) => {
             return (
               <Link href={`${seasonId}/${filter.name}`} key={filter.id}>
                 <div>
-                  <img src={filter.thumbnailUrl} alt="oops" />
+                  <img src={filter.thumbnailUrl} alt="" />
                   <p>{filter.name} </p>
                 </div>
               </Link>
