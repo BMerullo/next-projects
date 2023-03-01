@@ -1,18 +1,18 @@
-import React from "react";
-import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
-import Link from "next/link";
+import React from "react"
+import { useRouter } from "next/router"
+import Layout from "@/components/Layout"
+import Link from "next/link"
 
 const Season = ({ episodes }) => {
-  const router = useRouter();
+  const router = useRouter()
   if (router.isFallback) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
-  console.log(episodes);
+  // console.log(episodes);
 
-  const { seasonId } = router.query;
+  const { seasonId } = router.query
 
-  console.log(seasonId);
+  console.log(seasonId)
 
   return (
     <Layout>
@@ -28,38 +28,38 @@ const Season = ({ episodes }) => {
                   <p>{filter.name} </p>
                 </div>
               </Link>
-            );
+            )
           })}
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default Season;
+export default Season
 
 export async function getStaticPaths() {
-  const response = await fetch("https://api.sampleapis.com/simpsons/episodes");
-  const data = await response.json();
+  const response = await fetch("https://api.sampleapis.com/simpsons/episodes")
+  const data = await response.json()
 
   const paths = data.map((season) => {
     return {
       params: {
         seasonId: `${season.id}`,
       },
-    };
-  });
+    }
+  })
   return {
     paths,
     fallback: true,
-  };
+  }
 }
 
 export async function getStaticProps() {
-  const response = await fetch("https://api.sampleapis.com/simpsons/episodes");
-  const data = await response.json();
+  const response = await fetch("https://api.sampleapis.com/simpsons/episodes")
+  const data = await response.json()
   return {
     props: {
       episodes: data,
     },
-  };
+  }
 }

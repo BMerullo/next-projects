@@ -1,6 +1,7 @@
 body {
-  background-color: #ebba29;
-  /* background-image: url("../assets/images/Simpsons.jpeg"); */
+  /* background-color: #ebba29; */
+  background-image: url("../assets/images/Simpsons.jpeg");
+  background-size: cover;
 }
 h1 {
   color: #193ca0;
