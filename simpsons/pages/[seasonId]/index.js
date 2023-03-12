@@ -17,19 +17,21 @@ const Season = ({ episodes }) => {
   return (
     <Layout>
       <h1>Season {seasonId}</h1>
-      <section>
-        {episodes
-          .filter((episode) => episode.season === +seasonId)
-          .map((filter) => {
-            return (
-              <Link href={`${seasonId}/${filter.name}`} key={filter.id}>
-                <div>
-                  <img src={filter.thumbnailUrl} alt="oops" />
-                  <p>{filter.name} </p>
-                </div>
-              </Link>
-            )
-          })}
+      <section className="grid text-container">
+        <article className="g-col-4">
+          {episodes
+            .filter((episode) => episode.season === +seasonId)
+            .map((filter) => {
+              return (
+                <Link href={`${seasonId}/${filter.name}`} key={filter.id}>
+                  <div>
+                    <img src={filter.thumbnailUrl} alt="oops" />
+                    <p>{filter.name} </p>
+                  </div>
+                </Link>
+              )
+            })}
+        </article>
       </section>
     </Layout>
   )
